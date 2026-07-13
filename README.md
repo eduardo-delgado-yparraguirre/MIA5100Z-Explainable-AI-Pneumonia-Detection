@@ -1,66 +1,66 @@
-# 🩺 Explainable AI for Pneumonia Detection from Chest X-Rays
+# 🩺 Explainable AI for Pneumonia Detection using Deep Learning
 
 <p align="center">
 
-**Deep Learning • Medical Imaging • Explainable AI (XAI)**
+**Transfer Learning • Medical Imaging • Explainable AI (XAI)**
 
-*An educational project demonstrating how to interpret Convolutional Neural Networks using Grad-CAM, SHAP, and LIME.*
+*A complete educational project demonstrating how to interpret Convolutional Neural Networks using Grad-CAM, SHAP, and LIME.*
 
 </p>
 
 ---
 
-## 📖 Overview
+# 📖 Overview
 
 Artificial Intelligence has demonstrated remarkable performance in medical image classification. However, most deep learning models operate as **black boxes**, making it difficult to understand **why** a prediction was made.
 
-This project demonstrates how **Explainable Artificial Intelligence (XAI)** techniques can improve the transparency of a Convolutional Neural Network (CNN) trained to detect **Pneumonia** from **Chest X-Ray images**.
+This repository demonstrates how **Explainable Artificial Intelligence (XAI)** techniques can improve the transparency of a Convolutional Neural Network (CNN) trained to detect **Pneumonia** from **Chest X-Ray images**.
 
-A **MobileNetV2** model is trained using **Transfer Learning**, and three popular explainability techniques are applied to the same trained model:
+The project trains a **MobileNetV2** model using **Transfer Learning**, then applies three popular explainability methods to the same trained model:
 
-- 🔥 **Grad-CAM**
-- 🟥 **SHAP**
-- 🟩 **LIME**
+- 🔥 Grad-CAM
+- 🟥 SHAP
+- 🟩 LIME
 
-The objective is to compare these techniques and better understand how deep learning models make medical imaging decisions.
+The objective is to compare these methods and understand how modern deep learning models make medical imaging decisions.
 
 ---
 
 # ✨ Features
 
-| Feature | Status |
+| Feature | Included |
 |:------------------------------|:------:|
 | MobileNetV2 Transfer Learning | ✅ |
 | CNN Binary Classification | ✅ |
 | Model Evaluation | ✅ |
 | Confusion Matrix | ✅ |
 | Classification Report | ✅ |
-| Grad-CAM Visualization | ✅ |
-| SHAP Visualization | ✅ |
-| Smoothed SHAP Visualization | ✅ |
-| LIME Visualization | ✅ |
-| Fully Commented Educational Code | ✅ |
-| Ready for Teaching & Learning | ✅ |
+| Grad-CAM | ✅ |
+| SHAP | ✅ |
+| Smoothed SHAP | ✅ |
+| LIME | ✅ |
+| Educational Code | ✅ |
+| Fully Commented | ✅ |
 
 ---
 
-# 🏗️ Project Workflow
+# 🏗️ Workflow
 
 ```text
-                   Chest X-Ray Dataset
-                           │
-                           ▼
-                 MobileNetV2 CNN Training
-                           │
-                           ▼
-                  Pneumonia Prediction
-                           │
-          ┌────────────────┼────────────────┐
-          ▼                ▼                ▼
-      Grad-CAM           SHAP             LIME
-          │                │                │
-          ▼                ▼                ▼
-  Attention Maps     Pixel Attribution  Superpixel Importance
+                 Chest X-Ray Images
+                         │
+                         ▼
+           MobileNetV2 Transfer Learning
+                         │
+                         ▼
+               Pneumonia Classification
+                         │
+        ┌────────────────┼────────────────┐
+        ▼                ▼                ▼
+     Grad-CAM          SHAP             LIME
+        │                │                │
+        ▼                ▼                ▼
+ Attention Maps   Pixel Attribution  Superpixel Explanation
 ```
 
 ---
@@ -68,109 +68,120 @@ The objective is to compare these techniques and better understand how deep lear
 # 📂 Repository Structure
 
 ```text
-MIA5100Z-Explainable-AI-Pneumonia-Detection
+MIA5100Z-Explainable-AI-Pneumonia-Detection/
 
 │
-├── train_model_teaching.py
+├── train_cnn_gradcam.py
 │
-├── generate_gradcam_examples.py
-├── generate_shap_examples.py
-├── generate_shap_examples_smoothed.py
-├── generate_lime_examples.py
+├── examples_cnn_gradcam.py
+├── examples_cnn_shap.py
+├── examples_cnn_shap_smooth.py
+├── examples_cnn_lime.py
 │
-├── examples/
-│   ├── training_accuracy.png
-│   ├── gradcam_six_examples_report.png
-│   ├── shap_six_examples_smoothed_report.png
+├── gradcam_report_images/
+│   ├── gradcam_1_pneumonia_comparison.png
+│   ├── gradcam_1_pneumonia_overlay.png
+│   ├── ...
+│   └── gradcam_six_examples_report.png
+│
+├── shap_report_images/
+│   ├── shap_1_pneumonia_comparison.png
+│   ├── shap_1_pneumonia_overlay.png
+│   ├── ...
+│   ├── shap_six_examples_report.png
+│   └── shap_six_examples_smoothed_report.png
+│
+├── lime_report_images/
+│   ├── lime_1_pneumonia_comparison.png
+│   ├── lime_1_pneumonia_overlay.png
+│   ├── ...
 │   └── lime_six_examples_report.png
 │
+├── training_accuracy.png
 ├── requirements.txt
 ├── README.md
-└── LICENSE
+├── LICENSE
+└── .gitignore
 ```
 
 ---
 
-# 📊 Training Performance
+# 📊 CNN Training
 
 <p align="center">
-<img src="examples/training_accuracy.png" width="700">
+<img src="training_accuracy.png" width="750">
 </p>
 
-The CNN was trained using **Transfer Learning** with **MobileNetV2**. Training and validation accuracy are monitored throughout the learning process to evaluate convergence and detect potential overfitting.
+The CNN was trained using **Transfer Learning** with MobileNetV2.
+
+Training and validation accuracy were monitored throughout the learning process to evaluate convergence and detect possible overfitting.
 
 ---
 
 # 🔥 Grad-CAM
 
 <p align="center">
-<img src="examples/gradcam_six_examples_report.png" width="900">
+<img src="gradcam_report_images/gradcam_six_examples_report.png" width="900">
 </p>
 
-### What does Grad-CAM show?
+Grad-CAM (Gradient-weighted Class Activation Mapping) highlights the image regions that most influenced the CNN prediction.
 
-Grad-CAM (Gradient-weighted Class Activation Mapping) highlights the regions of the X-ray that most influenced the CNN's prediction.
-
-**Advantages**
+### Advantages
 
 - Excellent localization
-- Easy to interpret
-- Clinician-friendly
-- Ideal for CNNs
+- Clinically intuitive
+- Fast
+- Specifically designed for CNNs
 
 ---
 
 # 🟥 SHAP
 
 <p align="center">
-<img src="examples/shap_six_examples_smoothed_report.png" width="900">
+<img src="shap_report_images/shap_six_examples_smoothed_report.png" width="900">
 </p>
 
-### What does SHAP show?
-
-SHAP (SHapley Additive exPlanations) estimates the contribution of each image pixel to the prediction.
+SHAP estimates the contribution of every image pixel to the final prediction.
 
 - 🔴 Red increases the probability of Pneumonia.
 - 🔵 Blue decreases the probability of Pneumonia.
 
-This repository also includes a **smoothed SHAP visualization** that produces more coherent anatomical regions for easier interpretation.
+This repository includes both the original SHAP implementation and an enhanced **smoothed SHAP visualization** that improves readability by grouping neighbouring attributions into coherent anatomical regions.
 
 ---
 
 # 🟩 LIME
 
 <p align="center">
-<img src="examples/lime_six_examples_report.png" width="900">
+<img src="lime_report_images/lime_six_examples_report.png" width="900">
 </p>
 
-### What does LIME show?
+LIME (Local Interpretable Model-Agnostic Explanations) divides the image into superpixels and identifies the regions that most strongly support the predicted class.
 
-LIME (Local Interpretable Model-Agnostic Explanations) divides the image into **superpixels** and determines which regions most strongly support the model's prediction.
-
-Unlike Grad-CAM, LIME is **model agnostic** and can be applied to many different machine learning models.
+Unlike Grad-CAM, LIME is model agnostic and can be applied to virtually any image classifier.
 
 ---
 
 # 📈 Explainability Comparison
 
 | Method | Strengths | Limitations |
-|----------|-----------|-------------|
-| **Grad-CAM** | Excellent localization, intuitive visualizations | CNN-specific |
-| **SHAP** | Strong theoretical foundation, pixel-level attribution | Computationally expensive |
-| **Smoothed SHAP** | Improved visual interpretation | Visualization post-processing |
-| **LIME** | Model-agnostic, interpretable superpixels | Sensitive to segmentation parameters |
+|---------|-----------|-------------|
+| 🔥 Grad-CAM | Excellent localization | CNN-specific |
+| 🟥 SHAP | Strong theoretical foundation | Computationally expensive |
+| 🟥 Smoothed SHAP | Better visualization of anatomical regions | Visualization post-processing |
+| 🟩 LIME | Model agnostic | Sensitive to segmentation parameters |
 
 ---
 
 # 📥 Dataset
 
-The Chest X-Ray dataset is **not included** in this repository.
+This repository **does not include the dataset**.
 
-Please download it from Kaggle:
+Please download the **Chest X-Ray Images (Pneumonia)** dataset from Kaggle:
 
 https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
 
-After extracting, your project should look like:
+After extracting:
 
 ```text
 project/
@@ -181,17 +192,9 @@ project/
 │   ├── val/
 │   └── test/
 │
-├── train_model_teaching.py
+├── train_cnn_gradcam.py
 └── ...
 ```
-
-## Dataset Attribution
-
-This project uses the **Chest X-Ray Images (Pneumonia)** dataset originally published by:
-
-> Kermany, D., Zhang, K., & Goldbaum, M. (2018). *Labeled Optical Coherence Tomography (OCT) and Chest X-Ray Images for Classification*. Mendeley Data, V2.
-
-If you use this project in your own work, please cite the original dataset authors.
 
 ---
 
@@ -203,7 +206,7 @@ Clone the repository:
 git clone https://github.com/eduardo-delgado-yparraguirre/MIA5100Z-Explainable-AI-Pneumonia-Detection.git
 ```
 
-Install the required packages:
+Install the required libraries:
 
 ```bash
 pip install -r requirements.txt
@@ -213,13 +216,17 @@ pip install -r requirements.txt
 
 # 🚀 Usage
 
-## 1. Train the CNN
+## Train the CNN
 
 ```bash
-python train_model_teaching.py
+python train_cnn_gradcam.py
 ```
 
-This generates:
+This script:
+
+- trains the CNN
+- evaluates the model
+- saves the trained model
 
 ```
 pneumonia_mobilenetv2_model.keras
@@ -227,34 +234,58 @@ pneumonia_mobilenetv2_model.keras
 
 ---
 
-## 2. Generate Grad-CAM explanations
+## Generate Grad-CAM
 
 ```bash
-python generate_gradcam_examples.py
+python examples_cnn_gradcam.py
+```
+
+Results:
+
+```
+gradcam_report_images/
 ```
 
 ---
 
-## 3. Generate SHAP explanations
+## Generate SHAP
 
 ```bash
-python generate_shap_examples.py
+python examples_cnn_shap.py
+```
+
+Results:
+
+```
+shap_report_images/
 ```
 
 ---
 
-## 4. Generate Smoothed SHAP explanations
+## Generate Smoothed SHAP
 
 ```bash
-python generate_shap_examples_smoothed.py
+python examples_cnn_shap_smooth.py
+```
+
+Results:
+
+```
+shap_report_images/
 ```
 
 ---
 
-## 5. Generate LIME explanations
+## Generate LIME
 
 ```bash
-python generate_lime_examples.py
+python examples_cnn_lime.py
+```
+
+Results:
+
+```
+lime_report_images/
 ```
 
 ---
@@ -268,53 +299,70 @@ python generate_lime_examples.py
 - Matplotlib
 - SHAP
 - LIME
-- Scikit-Learn
-- Scikit-Image
 - SciPy
+- Scikit-image
+- Scikit-learn
 
 ---
 
 # 🎓 Educational Purpose
 
-This repository was created for educational purposes to demonstrate:
+This repository was developed as an educational project to demonstrate:
 
-- Deep Learning
 - Transfer Learning
 - Medical Image Classification
 - Explainable Artificial Intelligence (XAI)
 - Model Interpretability
-- Reproducible AI Experiments
+- Deep Learning Best Practices
 
-The code is intentionally written with detailed comments to help students understand every step of the process.
+The code has been intentionally written with extensive comments and modular scripts to support learning and experimentation.
 
 ---
 
 # 🚀 Future Improvements
 
 - Interactive Streamlit application
-- Upload custom Chest X-Rays
-- Integrated Grad-CAM + SHAP + LIME dashboard
-- Vision Transformer (ViT) implementation
+- Upload custom X-rays for prediction
+- Combined Grad-CAM + SHAP + LIME dashboard
+- Vision Transformers (ViTs)
 - Multi-class chest disease classification
-- Additional explainability methods (Integrated Gradients, Score-CAM, Guided Backpropagation)
+- Additional explainability techniques (Integrated Gradients, Score-CAM, Guided Backpropagation)
 
 ---
 
 # 👨‍💻 Author
 
-**Eduardo Delgado**
+**Eduardo Delgado Yparraguirre**
 
 Master of Engineering — Artificial Intelligence  
 University of Ottawa
 
-> **Note:** This project was developed with the assistance of generative AI tools. The code was reviewed, tested, and adapted by the author for educational purposes.
+> **Note:** This educational project was developed with the assistance of generative AI tools. The code, documentation, and explanations were reviewed, tested, and adapted by the author.
+
+---
+
+# 🙏 Dataset Attribution
+
+This project uses the **Chest X-Ray Images (Pneumonia)** dataset originally published by:
+
+> Kermany, D., Zhang, K., & Goldbaum, M. (2018). *Labeled Optical Coherence Tomography (OCT) and Chest X-Ray Images for Classification.*
+
+Dataset available from:
+
+https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
+
+Please cite the original dataset if you use it in your own research.
 
 ---
 
 # 📄 License
 
-This project is released under the **MIT License**.
+This project is distributed under the **MIT License**.
 
 ---
 
-⭐ If you found this repository useful, please consider giving it a star!
+<p align="center">
+
+⭐ **If you found this repository useful, please consider giving it a star!**
+
+</p>
